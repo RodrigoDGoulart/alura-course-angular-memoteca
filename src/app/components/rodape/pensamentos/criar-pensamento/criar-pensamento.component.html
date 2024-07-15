@@ -10,6 +10,7 @@
       id="pensamento"
       name="pensamento"
       placeholder="Digite o pensamento"
+      [value]="pensamento.conteudo"
     />
     <label for="autoria">Autoria</label>
     <input
@@ -18,6 +19,7 @@
       id="autoria"
       name="autoria"
       placeholder="Digite a autoria ou fonte"
+      [value]="pensamento.autoria"
     />
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
@@ -35,8 +37,8 @@
             src="../../../../../assets/imagens/modelo1.png"
             alt="Aspas azuis"
           />
-          <p class="conteudo">Aqui vai o conteúdo</p>
-          <p class="autoria"><b>Aqui vai a autoria</b></p>
+          <p class="conteudo">{{ pensamento.conteudo }}</p>
+          <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
         </div>
       </div>
       <div class="radio-modelo">
@@ -53,8 +55,8 @@
             src="../../../../../assets/imagens/modelo2.png"
             alt="Aspas azul claro"
           />
-          <p class="conteudo">Aqui vai o conteúdo</p>
-          <p class="autoria"><b>Aqui vai a autoria</b></p>
+          <p class="conteudo">{{ pensamento.conteudo }}</p>
+          <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
         </div>
       </div>
       <div class="radio-modelo">
@@ -71,8 +73,8 @@
             src="../../../../../assets/imagens/modelo3.png"
             alt="Aspas verdes"
           />
-          <p class="conteudo">Aqui vai o conteúdo</p>
-          <p class="autoria"><b>Aqui vai a autoria</b></p>
+          <p class="conteudo">{{ pensamento.conteudo }}</p>
+          <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
         </div>
       </div>
     </div>
