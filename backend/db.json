@@ -8,9 +8,9 @@
     },
     {
       "id": 2,
-      "conteudo": "lorem ipsum",
+      "conteudo": "lorem ipsum editado",
       "autoria": "lorem ipsum",
-      "modelo": "modelo2"
+      "modelo": "modelo1"
     },
     {
       "id": 3,
