@@ -1,0 +1,22 @@
+{
+  "pensamentos": [
+    {
+      "id": 1,
+      "conteudo": "lorem ipsum",
+      "autoria": "lorem ipsum",
+      "modelo": "modelo1"
+    },
+    {
+      "id": 2,
+      "conteudo": "lorem ipsum",
+      "autoria": "lorem ipsum",
+      "modelo": "modelo2"
+    },
+    {
+      "id": 3,
+      "conteudo": "lorem ipsum",
+      "autoria": "lorem ipsum",
+      "modelo": "modelo3"
+    }
+  ]
+}
