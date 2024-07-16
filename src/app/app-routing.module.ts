@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CriarPensamentoComponent } from './components/rodape/pensamentos/criar-pensamento/criar-pensamento.component';
-import { ListarPensamentoComponent } from './components/rodape/pensamentos/listar-pensamento/listar-pensamento.component';
+import { CriarPensamentoComponent } from './components/pensamentos/criar-pensamento/criar-pensamento.component';
+import { ListarPensamentoComponent } from './components/pensamentos/listar-pensamento/listar-pensamento.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'pensamentos', pathMatch: 'full' },
