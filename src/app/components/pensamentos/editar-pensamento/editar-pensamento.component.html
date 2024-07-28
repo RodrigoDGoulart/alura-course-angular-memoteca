@@ -2,16 +2,22 @@
   <header class="header">
     <h2>Adicione um <br />novo pensamento</h2>
   </header>
-  <form action="">
+  <form action="" [formGroup]="form">
     <label for="pensamento">Pensamento</label>
     <input
       type="textarea"
       class="input"
       id="pensamento"
-      name="pensamento"
+      name="conteudo"
       placeholder="Digite o pensamento"
-      [(ngModel)]="pensamento.conteudo"
+      formControlName="conteudo"
     />
+    <div
+      *ngIf="form.get('conteudo')?.errors && form.get('conteudo')?.touched"
+      class="mensagem__erro"
+    >
+      Pensamento é obrigatório
+    </div>
     <label for="autoria">Autoria</label>
     <input
       type="text"
@@ -19,13 +25,31 @@
       id="autoria"
       name="autoria"
       placeholder="Digite a autoria ou fonte"
-      [(ngModel)]="pensamento.autoria"
+      formControlName="autoria"
     />
+    <div
+      *ngIf="form.get('autoria')?.errors?.['required'] && form.get('autoria')?.touched"
+      class="mensagem__erro"
+    >
+      Autoria é obrigatória
+    </div>
+    <div
+      *ngIf="form.get('autoria')?.errors?.['minlength'] && form.get('autoria')?.touched"
+      class="mensagem__erro"
+    >
+      Autoria precisa ter no mínimo 3 caractéres
+    </div>
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <div class="radio-modelo">
         <label for="modelo1">
-          <input type="radio" id="modelo1" value="modelo1" [(ngModel)]="pensamento.modelo" name="modelo-card" />
+          <input
+            type="radio"
+            id="modelo1"
+            value="modelo1"
+            formControlName="modelo"
+            name="modelo"
+          />
           <div class="custom-radio">
             <span></span>
           </div>
@@ -37,13 +61,21 @@
             src="../../../../../assets/imagens/modelo1.png"
             alt="Aspas azuis"
           />
-          <p class="conteudo">{{ pensamento.conteudo }}</p>
-          <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
+          <p class="conteudo">{{ form.get("conteudo")?.value }}</p>
+          <p class="autoria">
+            <b>{{ form.get("autoria")?.value }}</b>
+          </p>
         </div>
       </div>
       <div class="radio-modelo">
         <label for="modelo2">
-          <input type="radio" id="modelo2" value="modelo2" [(ngModel)]="pensamento.modelo" name="modelo-card" />
+          <input
+            type="radio"
+            id="modelo2"
+            value="modelo2"
+            formControlName="modelo"
+            name="modelo"
+          />
           <div class="custom-radio">
             <span></span>
           </div>
@@ -55,13 +87,21 @@
             src="../../../../../assets/imagens/modelo2.png"
             alt="Aspas azul claro"
           />
-          <p class="conteudo">{{ pensamento.conteudo }}</p>
-          <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
+          <p class="conteudo">{{ form.get("conteudo")?.value }}</p>
+          <p class="autoria">
+            <b>{{ form.get("autoria")?.value }}</b>
+          </p>
         </div>
       </div>
       <div class="radio-modelo">
         <label for="modelo3">
-          <input type="radio" id="modelo3" value="modelo3" [(ngModel)]="pensamento.modelo" name="modelo-card" />
+          <input
+            type="radio"
+            id="modelo3"
+            value="modelo3"
+            formControlName="modelo"
+            name="modelo"
+          />
           <div class="custom-radio">
             <span></span>
           </div>
@@ -73,13 +113,21 @@
             src="../../../../../assets/imagens/modelo3.png"
             alt="Aspas verdes"
           />
-          <p class="conteudo">{{ pensamento.conteudo }}</p>
-          <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
+          <p class="conteudo">{{ form.get("conteudo")?.value }}</p>
+          <p class="autoria">
+            <b>{{ form.get("autoria")?.value }}</b>
+          </p>
         </div>
       </div>
     </div>
     <div class="acoes">
-      <button (click)="editarPensamento()" class="botao">Salvar</button>
+      <button
+        (click)="editarPensamento()"
+        [disabled]="!form.valid"
+        [ngClass]="habilitarBotao()"
+      >
+        Salvar
+      </button>
       <button (click)="cancelar()" class="botao">Cancelar</button>
     </div>
   </form>

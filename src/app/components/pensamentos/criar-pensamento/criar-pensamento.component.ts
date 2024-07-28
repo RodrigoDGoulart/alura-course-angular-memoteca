@@ -38,7 +38,6 @@ export class CriarPensamentoComponent implements OnInit {
   }
 
   criarPensamento() {
-    console.log(this.formulario.status);
     if (this.formulario.valid) {
       this.service.criar(this.formulario.value).subscribe(() => {
         alert('Pensamento criado!');

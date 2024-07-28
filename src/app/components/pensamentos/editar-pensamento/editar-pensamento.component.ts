@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Pensamento } from '../pensamento';
 import { PensamentoService } from '../pensamento.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-editar-pensamento',
@@ -9,33 +9,56 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./editar-pensamento.component.css'],
 })
 export class EditarPensamentoComponent implements OnInit {
-  pensamento: Pensamento = {
-    id: 0,
-    conteudo: '',
-    autoria: '',
-    modelo: 'modelo1',
-  };
+  form!: FormGroup;
 
   constructor(
     private service: PensamentoService,
     private router: Router,
     private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
   ) {}
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      conteudo: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(/(.|\s)*\S(.|\s)*/),
+        ]),
+      ],
+      autoria: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(3)
+        ]),
+      ],
+      modelo: ['modelo1'],
+    });
     const id = this.route.snapshot.paramMap.get('id');
     this.service.buscarPorId(parseInt(id as string)).subscribe((pensamento) => {
-      this.pensamento = pensamento;
+      this.form.setValue({
+        conteudo: pensamento.conteudo,
+        autoria: pensamento.autoria,
+        modelo: pensamento.modelo
+      });
     })
   }
 
   editarPensamento() {
-    this.service.editar(this.pensamento).subscribe((pensamento) => {
-      this.router.navigate(['/pensamentos']);
-    })
+    if (this.form.valid) {
+      this.service.editar(this.form.value).subscribe(() => {
+        this.router.navigate(['/pensamentos']);
+      });
+    }
   }
 
   cancelar() {
     this.router.navigate(['/pensamentos']);
+  }
+
+  habilitarBotao(): string {
+    return this.form.valid ? 'botao' : 'botao__desabilitado';
   }
 }
