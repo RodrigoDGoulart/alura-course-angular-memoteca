@@ -4,30 +4,35 @@
       "id": 1,
       "conteudo": "lorem ipsum",
       "autoria": "lorem ipsum",
-      "modelo": "modelo1"
+      "modelo": "modelo1",
+      "favorito": true
     },
     {
       "id": 2,
       "conteudo": "lorem ipsum editado",
       "autoria": "lorem ipsum",
-      "modelo": "modelo1"
+      "modelo": "modelo1",
+      "favorito": true
     },
     {
       "id": 3,
       "conteudo": "lorem ipsum",
       "autoria": "lorem ipsum",
-      "modelo": "modelo3"
+      "modelo": "modelo3",
+      "favorito": false
     },
     {
       "conteudo": "pensamento novo",
       "autoria": "teste",
       "modelo": "modelo2",
+      "favorito": false,
       "id": 4
     },
     {
       "conteudo": "teste",
       "autoria": "a33",
       "modelo": "modelo1",
+      "favorito": false,
       "id": 5
     }
   ]

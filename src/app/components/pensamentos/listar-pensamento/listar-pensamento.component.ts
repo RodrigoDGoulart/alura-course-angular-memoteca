@@ -24,9 +24,6 @@ export class ListarPensamentoComponent implements OnInit {
   }
 
   carregarMaisPensamentos() {
-    if (this.filtro.trim().length < 2) {
-      return
-    }
     this.service
       .listar(this.paginaAtual + 1, undefined, this.filtro)
       .subscribe((listaPensamentos) => {
@@ -39,6 +36,9 @@ export class ListarPensamentoComponent implements OnInit {
   }
 
   pesquisarPensamentos() {
+    if (this.filtro.trim().length < 2) {
+      return;
+    }
     this.paginaAtual = 1;
     this.haMaisPensamentos = true;
     this.service

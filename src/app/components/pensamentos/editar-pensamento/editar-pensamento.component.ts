@@ -37,13 +37,15 @@ export class EditarPensamentoComponent implements OnInit {
         ]),
       ],
       modelo: ['modelo1'],
+      favorito: [false],
     });
     const id = this.route.snapshot.paramMap.get('id');
     this.service.buscarPorId(parseInt(id as string)).subscribe((pensamento) => {
       this.form.setValue({
         conteudo: pensamento.conteudo,
         autoria: pensamento.autoria,
-        modelo: pensamento.modelo
+        modelo: pensamento.modelo,
+        favorito: pensamento.favorito,
       });
     })
   }
