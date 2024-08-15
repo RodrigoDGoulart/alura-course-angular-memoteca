@@ -15,7 +15,9 @@
         style="width: 24px; height: auto"
       />
     </div>
-    <h2 class="ff-inter">Meu mural</h2>
+    <h2 class="ff-inter">
+      {{ favorito ? 'Meus favoritos' : 'Meu mural' }}
+    </h2>
     <div class="botoes">
       <button class="botao" (click)="setFavorito(false)">Meu mural</button>
       <button class="botao" (click)="setFavorito(true)">Meus favoritos</button>
