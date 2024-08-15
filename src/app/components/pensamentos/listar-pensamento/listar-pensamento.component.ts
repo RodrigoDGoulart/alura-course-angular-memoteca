@@ -42,6 +42,7 @@ export class ListarPensamentoComponent implements OnInit {
   }
 
   // just to follow the course, the function below was not used
+  // warning: deprecated features
   recarregarComponente() {
     this.favorito = false;
     this.paginaAtual = 1;
