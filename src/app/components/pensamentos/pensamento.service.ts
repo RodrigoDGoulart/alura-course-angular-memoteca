@@ -11,13 +11,17 @@ export class PensamentoService {
 
   constructor(private http: HttpClient) {}
 
-  listar(page: number, limit: number = 2, filter: string): Observable<Pensamento[]> {
+  listar(page: number, limit: number = 6, filter: string, favorite: boolean = false): Observable<Pensamento[]> {
     let params = new HttpParams()
       .set('_page', page)
       .set('_limit', limit);
 
     if (filter.trim().length > 2) {
       params = params.set('q', filter);
+    }
+
+    if (favorite) {
+      params = params.set('favorito', 'true')
     }
 
     return this.http.get<Pensamento[]>(

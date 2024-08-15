@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Pensamento } from '../pensamento';
 import { PensamentoService } from '../pensamento.service';
 
@@ -20,6 +20,8 @@ export class PensamentoComponent implements OnInit {
     private service: PensamentoService,
   ) {}
 
+  @Output() onToggleFavorite = new EventEmitter();
+
   ngOnInit(): void {}
 
   larguraPensamento(): string {
@@ -35,5 +37,6 @@ export class PensamentoComponent implements OnInit {
 
   atualizarFavoritos() {
     this.service.favoritar(this.pensamento).subscribe();
+    this.onToggleFavorite.emit();
   }
 }
